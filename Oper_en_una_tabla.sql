@@ -52,7 +52,7 @@ INSERT INTO post (id, nombre_de_usuario, fecha_de_creacion, contenido, descripci
 VALUES (5, 'Pedro', '2020-11-02', 'Piedra Papel o Tijeras', 'Segundo post de Pedro', 'Titulo Pedro 2');
 
 -- 7.- Eliminar el post de Carlos
-DELETE FROM post WHERE nombre='Carlos'
+DELETE FROM post WHERE nombre_de_usuario='Carlos';
 
 -- 8.- Ingresar un nuevo post para el usuario "Carlos"
 INSERT INTO post (id, nombre_de_usuario, fecha_de_creacion, contenido, descripcion, titulo)
@@ -64,10 +64,13 @@ VALUES (6, 'Carlos', '2020-11-15', 'Las Bondades de Bootstrap', 'Segundo post de
 -- * |"id" | "fecha_y_hora_de_creacion" | "contenido" |
 -- * que se relacione con la tabla posts
 CREATE TABLE comentarios(
-    id INT UNIQUE,
+    id INT,
     fecha_y_hora_de_creacion TIMESTAMP,
     contenido VARCHAR(1000),
-    FOREIGN KEY (id) REFERENCES posts(id)
+    -- La relacion entre las tablas la estoy haciendo con los "id" de los posts,
+    -- imagino que es un foro y alguien publico un post y a ese respectivo post
+    -- la gente le hace comentarios, así me lo imagino
+    FOREIGN KEY (id) REFERENCES post(id)
 );
 
 -- 10.- Crear comentarios:
